@@ -1,0 +1,42 @@
+import plantas.*
+describe "Test de Plantas" {
+
+	test "Menta 1 metro"{
+		var menta1 = new Menta(altura=1)
+		assert.that(menta1.nuevasSemillas())
+		assert.equals(3,menta1.espacio())
+	}
+	
+	test "Menta 0.3 metros"{
+		var menta2 = new Menta(altura=0.3)
+		assert.notThat(menta2.nuevasSemillas())
+		assert.equals(0.9,menta2.espacio())
+	}
+	
+	test "Soja 0.6 metros y año 2009"{
+		var soja1 = new Soja(altura=0.6,asemilla=2009)
+		assert.notThat(soja1.nuevasSemillas())
+		assert.equals(0.3,soja1.espacio())
+		assert.equals(7,soja1.horasSol())
+	}
+	
+	test "Quimoa tolera 12 horas de sol y su semilla de origen es de 2010"{
+		var quinoa1 = new Quinoa(horasSol=12,asemilla=2010)
+		assert.that(quinoa1.nuevasSemillas())
+	}
+	test "Quimoa tolera 9 horas de sol y su semilla de origen es de 2001"{
+		var quinoa2 = new Quinoa(horasSol=9,asemilla=2001)
+		assert.that(quinoa2.nuevasSemillas())
+	}
+	
+	test "Soja Transgenica nunca da nuevas semillas aunque tenga la altura suficiente"{
+		var sojaTrans1 = new SojaTrans(altura=1.2,asemilla=2009)
+		assert.notThat(sojaTrans1.nuevasSemillas())
+	}
+	
+	test "Hierba buena altura igual a Menta1, da el doble de espacio"{
+		var hierbaBuena1 = new HierbaBuena(altura=1)
+		assert.equals(6,hierbaBuena1.espacio())
+	}
+
+}
