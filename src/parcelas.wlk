@@ -13,7 +13,17 @@ class Parcela {
 		if(self.cantActual()+1>self.cantMaxima() or unaPlanta.horasSol()+2 <=self.horasDeSol())
 		{self.error("Error no se puede plantar")}
 		else {colPlantas.add(unaPlanta)}
-	}	
+	}
+	method plantaBienAsociada(unaPlanta)	
 }
+
+class Ecologica inherits Parcela{
+	override method plantaBienAsociada(unaPlanta)= not self.tieneComplicaciones() and unaPlanta.parcelaIdeal(self)
+}
+
+class Industrial inherits Parcela{
+	override method plantaBienAsociada(unaPlanta) = self.cantMaxima()==2 and unaPlanta.esFuerte()
+}
+
 
 
