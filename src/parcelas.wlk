@@ -25,5 +25,8 @@ class Industrial inherits Parcela{
 	override method plantaBienAsociada(unaPlanta) = self.cantMaxima()==2 and unaPlanta.esFuerte()
 }
 
-
+class INTA{
+	var property colParcelas = []
+	method promedio() = colParcelas.colPlantas().sum({p => p.canActual()})/colParcelas.size()
+}
 
